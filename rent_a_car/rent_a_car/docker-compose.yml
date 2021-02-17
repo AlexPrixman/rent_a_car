@@ -28,25 +28,6 @@ services:
       - MYSQL_DATABASE=default_schem
     volumes:
       - ~/mysql_data:/var/lib/mysql
-  mssql:
-    image: mcr.microsoft.com/mssql/server
-    container_name: mssql
-    tty: true
-    ports:
-      - "1433:1433"
-    environment:
-      SA_PASSWORD: "eventura"
-      ACCEPT_EULA: "Y"
-  postgres:
-    image: postgres:11.2-alpine
-    container_name: postgres
-    environment:
-      POSTGRES_USER: eventura
-      POSTGRES_PASSWORD: 0102
-    ports:
-      - "5432:5432"
-    volumes:
-     - ~/postgres_data:/var/lib/postgresql/data
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: pma
