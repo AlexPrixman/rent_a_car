@@ -7,10 +7,10 @@ class Register extends CI_Controller {
  public function __construct()
  {
   parent::__construct();
-  if($this->session->userdata('id'))
-  {
-   redirect('private_area');
-  }
+//   if($this->session->userdata('user_id'))
+//   {
+//    redirect('private_area');
+//   }
   $this->load->library('form_validation');
   $this->load->library('encrypt');
   $this->load->model('register_model');
@@ -31,15 +31,15 @@ class Register extends CI_Controller {
    $verification_key = md5(rand());
    $encrypted_password = $this->encrypt->encode($this->input->post('user_password'));
    $data = array(
-    'name'  => $this->input->post('user_name'),
-    'email'  => $this->input->post('user_email'),
-    'password' => $encrypted_password,
+    'user_name'  => $this->input->post('user_name'),
+    'user_email'  => $this->input->post('user_email'),
+    'user_password' => $encrypted_password,
     'verification_key' => $verification_key
    );
    $id = $this->register_model->insert($data);
    if($id > 0)
    {
-    $subject = "Please verify email for login";
+    $subject = "Por favor verifique el correo para iniciar sesion";
     $message = "
     <p>Hi ".$this->input->post('user_name')."</p>
     <p>This is email verification mail from Codeigniter Login Register system. For complete registration process and login into system. First you want to verify you email by click this <a href='".base_url()."register/verify_email/".$verification_key."'>link</a>.</p>
@@ -56,7 +56,7 @@ class Register extends CI_Controller {
         'charset'   => 'iso-8859-1',
         'wordwrap'  => TRUE
     );
-    $this->load->library('email', $config);
+    $this->load->library('user_email', $config);
     $this->email->set_newline("\r\n");
     $this->email->from('info@webslesson.info');
     $this->email->to($this->input->post('user_email'));

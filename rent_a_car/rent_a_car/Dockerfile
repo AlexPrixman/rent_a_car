@@ -28,7 +28,6 @@ php7-pear \
 php7-dev \
 php7-openssl \
 php7-pdo_mysql \
-php7-mysqli \
 php7-mcrypt \
 php7-session \
 php7-simplexml \
@@ -40,7 +39,11 @@ php7-phar \
 php7-apcu \
 php7-intl \
 php7-opcache \
-php7-xmlwriter
+php7-xmlwriter \
+php7-common \ 
+php7-mysql \
+php7-zip
+
 
 
 # Add my own php config.
