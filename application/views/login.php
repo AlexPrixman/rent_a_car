@@ -1,45 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Renta car proyecto exoneracion</title>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Renta Car &gt; Exoneracion</title>
+    <!-- Bootstrap core CSS -->
+    <link href="<?php echo base_url().'assets/css/sb-admin-2.min.css'; ?>" rel="stylesheet">
+    <link href="<?php echo base_url().'assets/vendor/fontawesome-free/css/all.min.css'; ?>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-</head>
 
-<body>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="<?php echo base_url().'assets/css/signin1.css'; ?>" rel="stylesheet">
+  </head>
+  <body class="text-center">
+  <form class="form-signin" method="post" action="<?php echo base_url().'welcome/login'; ?>">
+  <div class="rotate-n-15">
+    <i class="fas fa-car fa-4x"></i>
+  </div>
+  <h1 class="h3 mb-3 font-weight-normal">Renta Car Proyecto de Exoneracion</h1>
+        <?php
+        if(isset($_GET['message'])){
+            if($_GET['message'] == "failed"){
+                echo '<div class="alert alert-danger text-left" role="alert"><strong>¡Error de inicio de sesion!</strong><br>Nombre de usuario y contraseña incorrectos.</div>';
+            } else if($_GET['message'] == "logout"){
+                echo '<div class="alert alert-success text-left" role="alert">¡Cierre la sesión con éxito!</div>';
+            } else if($_GET['message'] == "no ha iniciado sesión todavía"){
+                echo '<div class="alert alert-warning text-left" role="alert">¡Por favor ingresa primero!</div>';
+            }
+        }
+        ?>
     <div class="container">
-        <br />
-        <h3 align="center">Renta car proyecto exoneracion</h3>
-        <br />
-        <div class="panel panel-default">
-            <div class="panel-heading">Inicio de Sesion</div>
-            <div class="panel-body">
-                <?php
-                if($this->session->flashdata('message'))
-                {
-                    echo '
-                    <div class="alert alert-success">
-                        '.$this->session->flashdata("message").'
-                    </div>
-                    ';
-                }
-                ?>
-                <form method="post" action="<?php echo base_url().'welcome/login'?>">
-                    <div class="form-group">
-                        <label>Introduzca su correo</label>
-                        <input type="text" name="user_email" class="form-control" value="<?php echo set_value('user_email'); ?>" />
-                        <span class="text-danger"><?php echo form_error('user_email'); ?></span>
-                    </div>
-                    <div class="form-group">
-                        <label>Introduzca su contrasena</label>
-                        <input type="password" name="user_password" class="form-control" value="<?php echo set_value('user_password'); ?>" />
-                        <span class="text-danger"><?php echo form_error('user_password'); ?></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" name="login" value="Login" class="btn btn-info" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url(); ?>register">Registrarse</a>
-                    </div>
-                </form>
+        <div class="card">
+            <div class="card-body">
+                <label for="inputUname" class="sr-only">Usuario</label>
+                <input type="text" name="username" id="inputUname" class="form-control" placeholder="Username" required autofocus>
+                    <?php echo form_error('username'); ?>
+                <label for="inputPassword" class="sr-only">Contraseña</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <?php echo form_error('password'); ?>
+                  <div class="form-group">
+                      <input type="submit" name="login" value="Iniciar Sesion" class="btn btn-info" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url(); ?>register">Registrarse</a>
+                  </div>
+                <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
             </div>
         </div>
     </div>
+</form>
 </body>
 </html>
