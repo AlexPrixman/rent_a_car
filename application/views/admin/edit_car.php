@@ -5,7 +5,7 @@
 <div class="card shadow mb-4">
     <div class="card-body">
         <?php foreach($car as $m){ ?>
-        <form action="<?php echo base_url().'admin/udpate_car' ?>" method="post">
+        <form action="<?php echo base_url().'index.php/admin/udpate_car' ?>" method="post">
             <input type="hidden" name="car_id" value="<?php echo $m->$car_id; ?>">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Descripcion</label>
@@ -25,20 +25,20 @@
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Tipo de Vehiculo</label>
-                <div class="col-sm-10"><input type="text" class="form-control" name="cat_id" value="<?php echo $m->cat_id; ?>"></div>
+                <div class="col-sm-10"><input type="text" class="form-control" name="cat_desc" value="<?php echo $m->cat_desc; ?>"></div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Marca del Vehiculo</label>
-                <div class="col-sm-10"><input type="text" class="form-control" name="car_brand" value="<?php echo $m->car_brand; ?>"></div>
+                <div class="col-sm-10"><input type="text" class="form-control" name="car_brand" value="<?php echo $m->brand_desc; ?>"></div>
                 <?php echo form_error('car_brand'); ?>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Modelo de Vehiculo</label>
-                <div class="col-sm-10"><input type="text" class="form-control" name="car_model" value="<?php echo $m->car_model; ?>"></div>
+                <div class="col-sm-10"><input type="text" class="form-control" name="model_desc" value="<?php echo $m->model_desc; ?>"></div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Tipo de Combustible</label>
-                <div class="col-sm-10"><input type="text" class="form-control" name="fuel_id" value="<?php echo $m->fuel_desc; ?>"></div>
+                <div class="col-sm-10"><input type="text" class="form-control" name="fuel_desc" value="<?php echo $m->fuel_desc; ?>"></div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Estado del Vehiculo</label>

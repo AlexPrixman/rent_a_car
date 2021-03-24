@@ -4,7 +4,7 @@ services:
     privileged: true
     build: "."
     image: www/httpd
-    container_name: httpd-php
+    container_name: apache2
     ports:
       - "80:80"
     tty: true

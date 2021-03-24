@@ -1,6 +1,7 @@
+<br>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Informacion del Cliente</h1>
-    <a href="<?php echo base_url().'admin/add_customer'; ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Agregar Cliente</a>
+    <a href="<?php echo base_url().'index.php/admin/add_customer_act'; ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Agregar Cliente</a>
 </div>
     
 <div class="card shadow mb-4">
@@ -16,36 +17,42 @@
                         <th>Limite de Credito</th>
                         <th>Tipo de Persona</th>
                         <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php 
-                $no=1;
-                foreach($customer as $k){
+                    foreach($customer as $k){
                 ?>
                     <tr>
-                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $k->customer_id ?></td>
                         <td><?php echo $k->customer_name ?></td>
                         <td><?php echo $k->customer_cedula ?></td>
                         <td><?php echo $k->customer_cc ?></td>
                         <td><?php echo $k->customer_credit_limit ?></td>
-                        <div class="col-sm-10">
-                            <select class="form-control" name="customer_type">
-                                <option value="1">Fisica</option>
-                                <option value="0">Juridica</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-10">
-                            <select class="form-control" name="customer_status">
-                                <option value="1">Disponible</option>
-                                <option value="0">Rentado</option>
-                            </select>
-                        </div>
                         <td>
-                            <a class="btn btn-info btn-sm" href="<?php echo base_url().'admin/edit_customer/'.$k->customer_id; ?>">
+                        <?php 
+                        if($k->customer_type == 'F'){
+                            echo 'Fiscal';
+                        }else{
+                            echo 'Juridica';
+                        }  
+                        ?>
+                        </td>
+                        <td>
+                        <?php
+                        if($k->customer_status == 'A'){
+                            echo 'Activo';
+                        } else {
+                            echo 'Inactivo';
+                        }
+                        ?>
+                        </td>
+                        <td>
+                            <a class="btn btn-info btn-sm" href="<?php echo base_url().'index.php/admin/edit_customer/'.$k->customer_id; ?>">
                                 <i class="fas fa-edit"></i> Editar
                             </a>
-                            <a class="btn btn-danger btn-sm btn-delete" href="<?php echo base_url().'admin/delete_customer/'.$k->customer_id; ?>">
+                            <a class="btn btn-danger btn-sm btn-delete" href="<?php echo base_url().'index.php/admin/delete_customer/'.$k->customer_id; ?>">
                                 <i class="fas fa-trash"></i> Borrar
                             </a>
                         </td>
@@ -75,8 +82,8 @@ $('.btn-delete').on("click", function(e) {
     function(isConfirm) {
       if (isConfirm) {
         swal("Borrada! "," Informacion del cliente borrada!", "success");
-        setTimeout(function(){ window.location.replace = url; }, 2000);
-        //window.location.replace(url);
+        setTimeout(function(){ window.location.replace(url); 
+        }, 2000);
       } else {
         swal("Canceled "," Information del cliente guardada. :)", "error");
       }

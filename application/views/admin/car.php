@@ -1,6 +1,7 @@
+<br>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Informacion del Vehiculo</h1>
-    <a href="<?php echo base_url().'admin/add_car'; ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Agregar un Vehiculo</a>
+    <a href="<?php echo base_url().'index.php/admin/add_car_act'; ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Agregar un Vehiculo</a>
 </div>
     
 <div class="card shadow mb-4">
@@ -16,42 +17,40 @@
                         <th>Numero de Placa</th>
                         <th>Tipo de Vehiculo</th>
                         <th>Marca del Vehiculo</th>
-                        <th>Modelo del Vehiculo</th>
                         <th>Tipo de Combustible</th>
                         <th>Estado del Vehiculo</th>
+                        <th>Modelo del Vehiculo</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php 
-                $no=1;
                 foreach($car as $m){
                 ?>
                     <tr>
-                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $m->car_id ?></td>
                         <td><?php echo $m->car_desc ?></td>
                         <td><?php echo $m->car_chasis ?></td>
                         <td><?php echo $m->car_engine ?></td>
                         <td><?php echo $m->car_plate ?></td>
-                        <td><?php echo $m->cat_id ?></td>
-                        <td><?php echo $m->car_brand ?></td>
-                        <td><?php echo $m->car_model ?></td>
-                        <td><?php echo $m->fuel_id ?></td>
-                        <td><?php echo $m->car_status ?></td>
+                        <td><?php echo $m->cat_desc ?></td>
+                        <td><?php echo $m->brand_desc ?></td>
+                        <td><?php echo $m->fuel_desc ?></td>
                         <td>
                         <?php
-                        if($m->car_status == 1){
+                        if($m->car_status == 'D'){
                             echo 'Disponible';
                         } else {
                             echo 'Rentado';
                         }
                         ?>
                         </td>
+                        <td><?php echo $m->model_desc ?></td>
                         <td>
-                            <a class="btn btn-info btn-sm" href="<?php echo base_url().'admin/edit_car/'.$m->car_id; ?>">
+                            <a class="btn btn-info btn-edit" name="car_id" href="<?php echo base_url().'index.php/admin/edit_car/'.$m->car_id; ?>">
                                 <i class="fas fa-edit"></i> Editar
                             </a>
-                            <a class="btn btn-danger btn-sm btn-hapus" href="<?php echo base_url().'admin/delete_car/'.$m->car_id; ?>">
+                            <a class="btn btn-danger btn-sm btn-delete" name="car_id" href="<?php echo base_url().'index.php/admin/delete_car/'.$m->car_id; ?>">
                                 <i class="fas fa-trash"></i> Eliminar
                             </a>
                         </td>
@@ -63,7 +62,7 @@
     </div>
 </div>
 <script type="text/javascript">
-$('.btn-hapus').on("click", function(e) {
+$('.btn-delete').on("click", function(e) {
   e.preventDefault();
   var url = $(this).attr('href');
   swal({
@@ -81,10 +80,11 @@ $('.btn-hapus').on("click", function(e) {
     function(isConfirm) {
       if (isConfirm) {
         swal("¡Eliminado! "," Los datos del automóvil se han eliminado!", "success");
-        setTimeout(function(){ window.location.replace = url; }, 2000);
-        //window.location.replace(url);
+        setTimeout(function(){ 
+            window.location.replace(url); 
+        }, 2000);
       } else {
-        swal("Cancelado", "Su informacion sigue a salvo :)", "error");
+        swal("Cancelado", "Su informacion sigue a salvo!", "error");
       }
     });
 });

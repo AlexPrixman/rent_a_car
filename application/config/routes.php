@@ -52,3 +52,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+$route['admin'] = 'Admin/index';
+// $route['add_car'] = 'Admin/add_car_act';
+// $route['car'] ='Admin/car';
+// $route['edit_car/:id'] = 'admin/edit_car';
+// $route['update_car/:id'] = 'admin/update_car';
+// $route['delete_car/:id'] = 'admin/delete_car';
+// $route['add_customer'] ='admin/add_customer';
+// $route['edit_customer/:id'] ='admin/edit_customer';
+// $route['update_customer/id'] ='admin/update_customer';
+// $route['delete_customer/:id'] ='admin/delete_customer';
+// $route['add_employee'] ='admin/add_employee';
+// $route['edit_employee/:id'] ='admin/edit_employee';
+// $route['update_employee/:id'] ='admin/update_employee';
+// $route['delete_employee/:id'] ='admin/delete_employee';
+// $route[''] ='';
+// $route[''] ='';
+// $route[''] ='';
+// $route[''] ='';
+// $route[''] ='';
+// $route[''] ='';
+// $route[''] ='';
