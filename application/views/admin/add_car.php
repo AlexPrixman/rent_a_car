@@ -22,7 +22,12 @@
                 <label class="col-sm-2 col-form-label">Tipo de Vehiculo</label>
                 <div class="col-sm-2">
                     <select class="form-control" name="cat_desc">
-                      
+                        <option value="">Select an option</option>
+                        <?php 
+                        $car_category = $this->m_rental->get_data('car_category')->result();
+                        foreach($car_category as $k){?>
+                            <option value="<?php echo $k->cat_id?>"><?php echo $k->cat_desc?></option>
+                        <?php  }  ?>  
                     </select>
                 </div> 
             </div>

@@ -123,7 +123,7 @@ class Admin extends CI_Controller{
 
     //This is the Customer CRUD function
     function customer(){
-        $data['customer'] = $this->m_rental->get_data('customer','customer_id')->result();
+        $data['customer'] = $this->m_rental->get_data('customer')->result();
         $this->load->view('admin/header');
         $this->load->view('admin/customer',$data);
         $this->load->view('admin/footer');
@@ -211,7 +211,7 @@ class Admin extends CI_Controller{
 
     //Here we are going to administer the employees information
     function employee(){
-        $data['employee'] = $this->m_rental->get_data('employee','employee_id')->result();
+        $data['employee'] = $this->m_rental->get_data('employee')->result();
         $this->load->view('admin/header');
         $this->load->view('admin/employee',$data);
         $this->load->view('admin/footer');
@@ -303,7 +303,7 @@ class Admin extends CI_Controller{
     } 
 
     function category(){
-        $data['car_category'] = $this->m_rental->get_data('car_category','cat_id')->result();
+        $data['car_category'] = $this->m_rental->get_data('car_category')->result();
         $this->load->view('admin/header');
         $this->load->view('admin/category',$data);
         $this->load->view('admin/footer');

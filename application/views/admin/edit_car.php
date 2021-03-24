@@ -43,7 +43,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Estado del Vehiculo</label>
                 <div class="col-sm-10">
-                <select class="form-control" name="status">
+                <select class="form-control" name="car_status">
                     <option value="D"<?php echo ($m->car_status==1)?' selected="selected"':'' ?>>Disponible</option>
                     <option value="R"<?php echo ($m->car_status==1)?'':' selected="selected"' ?>>Rentado</option>
                 </select>

@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 class M_rental extends CI_Model{
 
     function edit_data($where, $table){
